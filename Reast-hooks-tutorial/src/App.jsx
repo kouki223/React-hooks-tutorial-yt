@@ -25,7 +25,12 @@ function App() {
       <p>{koukicodeInfo.name}</p>
       <p>{koukicodeInfo.age}</p>
    </div>
-   
+   <hr/>
+   <h1></h1>
+   <p>{koukicodeInfo.name}</p>
+   <p>{koukicodeInfo.age}</p>
+</div>
+
   );
 }
 

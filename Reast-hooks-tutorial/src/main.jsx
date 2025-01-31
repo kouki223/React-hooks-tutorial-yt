@@ -13,9 +13,9 @@ const KoukicodeContext = createContext(koukicodeInfo);
 
 createRoot(document.getElementById('root')).render(
   <KoukicodeContext.Provider value={koukicodeInfo}>
-    <React.StrictMode>
+    <StrictMode>
       <App />
-    </React.StrictMode>
+    </StrictMode>
   </KoukicodeContext.Provider>
 )
 
