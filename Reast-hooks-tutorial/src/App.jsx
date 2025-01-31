@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./App.css";
 import KoukicodeContext from "./main";
 
 function App() {
   const [count, setCount] = useState(0);
   const koukicodeInfo = useContext(KoukicodeContext);
+  const ref = useRef();
 
   const handoleClick = () => {
     setCount(count + 1);
@@ -13,6 +14,10 @@ function App() {
   useEffect(() => {
     console.log("Hello Hooks");
   },[count]);
+
+  const handleRef = () => {
+    console.log(ref.current.value);
+  }
 
   return (
    <div className="App">
@@ -24,13 +29,12 @@ function App() {
       <h1>useContext</h1>
       <p>{koukicodeInfo.name}</p>
       <p>{koukicodeInfo.age}</p>
-   </div>
-   <hr/>
-   <h1></h1>
-   <p>{koukicodeInfo.name}</p>
-   <p>{koukicodeInfo.age}</p>
-</div>
 
+   <hr/>
+    <h1>useRef</h1>
+    <input type="text" ref={ref} />
+    <button onClick={handleRef}>UseRef</button>
+   </div>
   );
 }
 
