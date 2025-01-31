@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState, useReducer } from "react";
+import { useContext, useEffect, useRef, useState, useReducer, useMemo } from "react";
 import "./App.css";
 import KoukicodeContext from "./main";
 
@@ -32,6 +32,17 @@ function App() {
   }
 
   //useMemo
+  const [count01, setCount01] = useState(0);
+  const [count02, setCount02] = useState(0);
+
+  const square = useMemo(() => {
+    let i = 0;
+    while (i < 2000000) {
+      i++;
+    }
+    console.log("クリックされました");
+    return count02 * count02;
+  },[count02]);
   
 
   return (
@@ -58,6 +69,11 @@ function App() {
 
     <hr/>
     <h1>useMemo</h1>
+    <div>カウント１：{count01}</div>
+    <div>カウント２：{count02}</div>
+    <div>結果:{square}</div>
+    <button onClick={() => setCount01(count01 + 1)}>+</button>
+    <button onClick={() => setCount02(count02 + 1)}>+</button>
    </div>
   );
 }
