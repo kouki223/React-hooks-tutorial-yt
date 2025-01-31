@@ -1,7 +1,8 @@
-import { useContext, useEffect, useRef, useState, useReducer, useMemo, useCallback } from "react";
+import { useContext, useEffect, useRef, useState, useReducer, useMemo, useCallback} from "react";
 import "./App.css";
 import KoukicodeContext from "./main";
 import SomeChild from "./SomeChild";
+import useLocalStorage from "./useLocalStorage";
 
 const reducer = (state, action) => {
   switch(action.type) {
@@ -51,6 +52,8 @@ function App() {
     alert(`これは重い処理です。`);
   },[counter]);
 
+  const [age, setAge] = useLocalStorage("age", 20);
+
   return (
    <div className="App">
     <h1>UseState</h1>
@@ -84,6 +87,11 @@ function App() {
     <hr/>
     <h1>useCallBack</h1>
     <SomeChild showCount={showCount} />
+
+    <hr/>
+    <h1>カスタムフック</h1>
+    <p>{age}</p>
+    <button onClick={() => setAge(80)}>年齢をセット</button>
    </div>
   );
 }
